@@ -1,0 +1,397 @@
+﻿@model ConceptoVet.Models.Contact
+
+<p id="debugText">
+
+</p>
+
+    <div class="container">
+
+
+
+@using (Html.BeginForm("Contact", "Contact",
+                 FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.name, new { @class = "form-control"})
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.phone, new { @class = "form-control"})
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.mail)
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.mail, new { @class = "form-control"})
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+            @Html.ValidationMessageFor(model => model.mail)
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.zipCode)
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.zipCode, new { @class = "form-control"})
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+            @Html.ValidationMessageFor(model => model.zipCode)
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+        <input id="sendContact" type="submit" value="Devis en ligne" class="btn btn-primary"/>
+        </div>
+    </div>
+
+    </fieldset>
+}
+
+    @*Furniture catalogue with image*@
+    <div class="row top-buffer">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8 top-buffer-validation">
+            <div id="furnitureCatalogue" class="panel panel-primary">
+                <div class="panel-heading">Catalogue des meubles ConceptoVet</div>
+                <div id="furnitureCatalogueBody" class="panel-body">
+                    <div class="catalogue-furniture">
+                        <img id="ref"+1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="1200" title="Meuble chiens 205cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="1400" title="Meuble chiens 275cm">
+                    </div>
+                </div>
+                <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre devis</div>
+            </div>
+        </div>
+    </div>
+
+    @*Quotation panel with image*@
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8 top-buffer-validation">
+            <div id="furnitureQuotation" class="panel panel-primary">
+                <div class="panel-heading">Meubles inclus dans votre devis</div>
+                <div id="furnitureQuotationBody" class="panel-body">
+@*                    <img id="ref"+1" src="/Images/Chiens 205.png" reference="1" retail="1200" title="Meuble chiens 205cm">
+                    <img id="ref"+2" src="/Images/Chiens 275.png" reference="2" retail="1400" title="Meuble chiens 275cm">*@
+                    Aucun meuble dans votre devis
+                </div>
+                @*<div class="panel-footer">Cliquez sur les meubles pour les supprimer de votre devis</div>*@
+            </div>
+        </div>
+    </div>
+
+    @*Quotation table*@
+    <div id="quotationTable" class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8 top-buffer-validation">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Votre devis personnalisé</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th class="numeric">Qté</th>
+                            <th class="numeric">Prix</th>
+                            <th class="numeric">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chiens 205 cm</td>
+                            <td class="numeric">1</td>
+                            <td class="numeric">1900</td>
+                            <td class="numeric">1900</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Prix total</th>
+                            <td></td>
+                            <td></td>
+                            <th class="numeric">1900</th>
+                        </tr>
+                    </tfoot >
+                </table>
+            </div>
+        </div>
+    </div>
+
+    </div> @*Container*@
+
+@section Scripts {
+    @*Google API key*@
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0KjUdM6DpNQAggngGkuKLFvoHw-lJ0H4&sensor=false">
+    </script>
+    <script>
+
+        //Get the distance using Google Maps matrix API
+        function getDistance(zipCode) {
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix(
+              {
+                  origins: ["82290, France"], //Set here the zip code start for transport: Meauzac
+                  destinations: [zipCode + ", France"],
+                  travelMode: google.maps.TravelMode.DRIVING
+                  //unitSystem: UnitSystem,
+                  //durationInTraffic: Boolean,
+                  //avoidHighways: false,
+                  //avoidTolls: false
+              }, processDistance);
+        }
+
+        //Process the distance returned by Google Maps matrix API
+        function processDistance(response, status) {
+            if (status == google.maps.DistanceMatrixStatus.OK) {
+                if (response.rows.length >= 1) {
+                    if (response.rows[0].elements.length >= 1) {
+                        estimatedDistance = response.rows[0].elements[0].distance.value / 1000;
+                        //$('#debugText').empty();
+                        //$('#debugText').append(response.rows[0].elements[0].distance.text);
+                        //Set the appropriate value for transport and installation fee
+                        if (estimatedDistance > 800) serviceFee = 5239.92;
+                        else if (estimatedDistance > 600) serviceFee = 4270.85;
+                        else if (estimatedDistance > 400) serviceFee = 3390.53;
+                        else serviceFee = 2082.82;
+                        if (estimatedDistance != null) {
+                            $("#furnitureCatalogue").toggle("blind", 500);
+                            setTimeout(function () { $("#furnitureQuotation").toggle("blind", 500) }, 400);
+                            setTimeout(function () { $('#furnitureCatalogue').goTo() }, 900);
+                        }
+                        //Refresh the quotation
+                        //UpdateQuotationGrid();
+                        //$("input[type=submit]").removeAttr("disabled");
+                    }
+                }
+            }
+        }
+
+        //Key released (generating characters) in the zipCode input
+        function keyupZipCode(event) {
+
+            //Zip code with exactly 5 digits
+            if (parseInt($("#zipCode").val()) == $("#zipCode").val() && $("#zipCode").val().length == 5) {
+                getDistance($("#zipCode").val());
+                //Active form button
+                $("#sendContact").attr("disabled", false);
+            }
+            else {
+                //Inactive form button
+                $("#furnitureCatalogue").hide();
+                $("#furnitureQuotation").hide();
+                $("#quotationTable").hide();
+                $("#sendContact").attr("disabled", true);
+            }
+        }
+
+        //Click on furniture in the catalogue: add to quotation
+        function catalogueFurnitureClick(event) {
+            //Add the img at the end of the furnitureQuotation array
+            furnitureQuotation[furnitureQuotation.length] = $(event.target).children('img')
+            //Sort the furnitureQuotation array
+            furnitureQuotation.sort(function (a, b) { return (a.attr("reference") - b.attr("reference")); });
+
+            UpdateQuotation();
+        }
+
+        //Click on furniture in the quotation: remove from quotation
+        function quotationFurnitureClick(event) {
+            //Remove the first reference in furnitureQuotation array
+            for (var i = 0; i < furnitureQuotation.length; i++) {
+                if (furnitureQuotation[i].attr("reference") == $(event.target).children('img').attr("reference")) {
+                    furnitureQuotation.splice(i, 1);
+                    break;
+                }
+            }
+            UpdateQuotation();
+        }
+
+        //Redisplay images in quotation base on image stored in furnitureQuotation array
+        //Also update the quotation table
+        function UpdateQuotation() {
+            //Clean all the images in the quotation
+            $('#furnitureQuotationBody').empty();
+            //Clean the quotation table
+            $('#quotationTable tbody').empty();
+            $('#quotationTable tfoot').empty();
+
+            //Recreate the image in the right order
+            qty = 0;
+            total = 0;
+            for (var i = 0; i < furnitureQuotation.length; i++) {
+                //Add the image in the furnitureQuotation panel
+                $("#furnitureQuotationBody").append("<div class='quotation-furniture'> <img id='line" + parseInt(i + 1) + "' src='" + furnitureQuotation[i].attr("src") + "' reference='" + furnitureQuotation[i].attr("reference") + "' retail='1200' title='Meuble chiens 205cm'> </div>");
+
+                //Add line in quotation table
+                qty += 1;
+                total += parseInt(furnitureQuotation[i].attr("retail"));
+                if (i + 1 == furnitureQuotation.length || furnitureQuotation[i].attr("reference") != furnitureQuotation[i + 1].attr("reference")) {
+                    $('#quotationTable tbody').append("<tr><td>" + furnitureQuotation[i].attr("title") + "</td><td class='numeric'>" + qty + "</td> <td class='numeric'>" + formatNumber(parseInt(furnitureQuotation[i].attr("retail"))) + "</td><td class='numeric'>" + formatNumber(parseInt(qty * furnitureQuotation[i].attr("retail"))) + "</td></tr>");
+                    qty = 0;
+                }
+                else if (i > 0) {
+                }
+            }
+
+            //Add the service
+            $('#quotationTable tbody').append("<tr><td>Transport et installation sur site</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            total += serviceFee;
+
+            //Add the total
+            $('#quotationTable tfoot').append("<tr><th>Prix total</th><td></td><td></td><th class='numeric'>" + formatNumber(total) + "</th></tr>");
+
+            //Register click event for furniture
+            $(".quotation-furniture").click(function (event) {
+                quotationFurnitureClick(event);
+            });
+
+            if (furnitureQuotation.length == 0) {
+                $("#quotationTable").hide();
+                $("#furnitureQuotationBody").append("Aucun meuble dans votre devis");
+                $("#furnitureQuotation > .panel-footer").remove();
+            }
+            else {
+                if ( ! $("#furnitureQuotation > .panel-footer").length )
+                    $("#furnitureQuotation").append("<div class='panel-footer'>Cliquez sur les meubles pour les supprimer de votre devis</div>");
+                if (!$("#quotationTable").is(":visible")) {
+                    $("#quotationTable").show("blind", 500);
+                }
+                setTimeout(function () { $('#quotationTable').goTo() }, 500);
+            }
+
+        } //function UpdateQuotation
+
+        //Format number with space for thousand separator and comma for decimal separator
+        function formatNumber(number) {
+            number = number.toFixed(2) + '';
+            x = number.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? ',' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ' ' + '$2');
+            }
+            return x1 + x2;
+        }
+
+        //Scroll to the specified element
+        (function ($) {
+            $.fn.goTo = function () {
+                $('html, body').animate({
+                    scrollTop: $(this).offset().top + 'px'
+                }, 'fast');
+                return this; // for chaining...
+            }
+        })(jQuery);
+
+        //jQuery Document ready
+        var serviceFee; // = 2082.82; //3390.53    4270.85    5239.92
+        var furnitureQuotation = new Array(); //Furnitures in the quotation: contains img from the catalogue
+
+        $(document).ready(function () {
+
+            //Register keypress event on zip code
+            $("#zipCode").keyup(function (event) {
+                keyupZipCode(event);
+            });
+
+            //Register click event for furniture
+            $(".catalogue-furniture").click(function (event) {
+                catalogueFurnitureClick(event);
+            });
+
+            //Inactive form button
+            //$("#sendContact").attr("disabled", true);
+            //$("#sendContact").hide();
+
+            $("#furnitureCatalogue").hide();
+            $("#furnitureQuotation").hide();
+            $("#quotationTable").hide();
+            //$("#furnitureCatalogue").toggle("blind", 500);
+                      //{ direction: "vertical" });
+            //$("#furnitureCatalogue").show("fold", 10000);
+        });
+
+    </script>
+}
