@@ -25,5 +25,15 @@ namespace ConceptoVet.Models
         [Required(ErrorMessage = "Donnée obligatoire")]
         [RegularExpression(@"[0-9]{5}", ErrorMessage = "Exactement cinq chiffres")]
         public String zipCode { get; set; }
+
+        //For testing display and mail
+        public void TestInit() {
+            name = "GO";
+            phone = "8182";
+            mail = "go@go.go";
+            zipCode = "59139";
+        }
     }
+
+
 }

@@ -1,0 +1,15 @@
+﻿@model ConceptoVet.Models.Quotation
+
+@{
+    Layout = "~/Views/Shared/Mail.cshtml";
+}
+
+<p id="debugText">
+</p>
+
+<div>
+        @Html.Partial("Contact", Model.contact)
+</div>
+<div>
+        @Html.Partial("Quotation", Model.furnitures)
+</div>

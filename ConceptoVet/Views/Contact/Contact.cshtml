@@ -16,6 +16,14 @@
 
     <fieldset>
 
+@*    //Test to have fields in 2 columns
+    <div class="row clearfix">
+        <div class="col-md-6 column">
+		</div>
+		<div class="col-md-6 column">
+		</div>
+	</div>*@
+
     <div class="row top-buffer">
         <div class="col-md-1">
         </div>
@@ -112,16 +120,6 @@
         </div>
     </div>
 
-    <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="submit" value="Devis en ligne" class="btn btn-primary"/>
-        </div>
-    </div>
-
-    </fieldset>
-}
 
     @*Furniture catalogue with image*@
     <div class="row top-buffer">
@@ -132,10 +130,43 @@
                 <div class="panel-heading">Catalogue des meubles ConceptoVet</div>
                 <div id="furnitureCatalogueBody" class="panel-body">
                     <div class="catalogue-furniture">
-                        <img id="ref"+1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="1200" title="Meuble chiens 205cm">
+                        <img id="ref"+1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="2300" title="Meuble chiens 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="1400" title="Meuble chiens 275cm">
+                        <img id="ref"+2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble chiens 275cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble chats 205cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble chats 275cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+5" src="https://s3.amazonaws.com/conceptovet/images/Soins 135.png" reference="5" retail="1300" title="Meuble soins sans tiroir 135cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+6" src="https://s3.amazonaws.com/conceptovet/images/Soins 205.png" reference="6" retail="1700" title="Meuble soins sans tiroir 205cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+7" src="https://s3.amazonaws.com/conceptovet/images/Soins 275.png" reference="7" retail="2200" title="Meuble soins sans tiroir 275cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+8" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 135.png" reference="8" retail="1800" title="Meuble soins avec tiroirs 135cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+9" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 205.png" reference="9" retail="2700" title="Meuble soins avec tiroirs 205cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+10" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 275.png" reference="10" retail="3700" title="Meuble soins avec tiroirs 275cm">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+11" src="https://s3.amazonaws.com/conceptovet/images/Accueil droit.png" reference="11" retail="1500" title="Meuble accueil simple droit">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+12" src="https://s3.amazonaws.com/conceptovet/images/Accueil gauche.png" reference="12" retail="1500" title="Meuble accueil simple gauche">
+                    </div>
+                    <div class="catalogue-furniture">
+                        <img id="ref"+13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Meuble accueil double">
                     </div>
                 </div>
                 <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre devis</div>
@@ -197,7 +228,19 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3 top-buffer-validation">
+        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
+        </div>
+    </div>
+
+    </fieldset>
+}
     </div> @*Container*@
+
+<div id="messagePopup" class="alert alert-success popup-panel">Devis envoyé à l'adresse mail go@go.com</div>
 
 @section Scripts {
     @*Google API key*@
@@ -235,9 +278,11 @@
                         else if (estimatedDistance > 400) serviceFee = 3390.53;
                         else serviceFee = 2082.82;
                         if (estimatedDistance != null) {
-                            $("#furnitureCatalogue").toggle("blind", 500);
-                            setTimeout(function () { $("#furnitureQuotation").toggle("blind", 500) }, 400);
+                            displayPopupMessage("Distance estimée = " + estimatedDistance + " kilomètres");
+                            $("#furnitureCatalogue").show("blind", 500);
+                            setTimeout(function () { $("#furnitureQuotation").show("blind", 500) }, 400);
                             setTimeout(function () { $('#furnitureCatalogue').goTo() }, 900);
+                            PostContact(); //Record contact's data
                         }
                         //Refresh the quotation
                         //UpdateQuotationGrid();
@@ -247,23 +292,98 @@
             }
         }
 
+        //Post contact's data to the server
+        //This is called when the zipcode has been provided and distance has been calculated
+        function PostContact() {
+            //alert($("#zipCode").val());
+            $.post("/Contact/Contact",
+                { name: $("#name").val(), phone: $("#phone").val(), mail: $("#mail").val(), zipCode: $("#zipCode").val() }
+            );
+        }
+
+        //Post quotation's data to the server
+        //http://www.webcognoscere.com/post/How-to-POST-a-JSON-object-to-a-Controller-Action.aspx
+        function PostQuotation() {
+            contact = new Object();
+            contact.name = $("#name").val();
+            contact.phone = $("#phone").val();
+            contact.mail = $("#mail").val();
+            contact.zipCode = $("#zipCode").val();
+            quotation = new Object();
+            quotation.contact = contact;
+
+            //Retrieve the furniture in the furniture quotation
+            furnitures = new Array();
+            var previousReference = 0;
+            for (var i = 0; i < furnitureQuotation.length; i++) {
+                if (previousReference != furnitureQuotation[i].attr("reference")) {
+                    previousReference = furnitureQuotation[i].attr("reference")
+                    furniture = new Object();
+                    furniture.Id = furnitureQuotation[i].attr("reference");
+                    furniture.Description = furnitureQuotation[i].attr("title");
+                    furniture.Picture = furnitureQuotation[i].attr("src");
+                    furniture.Qty = 1;
+                    furniture.Retail = furnitureQuotation[i].attr("retail");
+                    furnitures.push(furniture);
+                }
+                else
+                    furniture.Qty += 1;
+            }
+            quotation.furnitures = furnitures;
+
+            //Get the service fee as funiture with the ID 99
+            furniture = new Object();
+            furniture.Id = 99;
+            furniture.Description = "Transport et installation sur site";
+            furniture.Qty = 1;
+            furniture.Retail = serviceFee;
+            furnitures.push(furniture);
+
+            $.ajax({
+                type: 'POST',
+                url: '/Quotation/Quotation',
+                contentType: 'application/json',
+                data: JSON.stringify(quotation)
+            });
+
+            //Display popup message to show mail was sent
+            displayPopupMessage("Le devis à été envoyé à l'adresse mail " + $("#mail").val());
+        }
+
+        //Display message in a popup
+        function displayPopupMessage(message, delay) {
+            delay = typeof delay !== 'undefined' ? delay : 2000; //Default delay is 2 sec
+            $("#messagePopup").text(message);
+            $("#messagePopup").toggle("blind", 500);
+            setTimeout(function () { $("#messagePopup").toggle("blind", 500) }, delay);
+        }
+
         //Key released (generating characters) in the zipCode input
         function keyupZipCode(event) {
 
             //Zip code with exactly 5 digits
             if (parseInt($("#zipCode").val()) == $("#zipCode").val() && $("#zipCode").val().length == 5) {
-                getDistance($("#zipCode").val());
+                //getDistance($("#zipCode").val());
                 //Active form button
-                $("#sendContact").attr("disabled", false);
+                //$("#sendContact").attr("disabled", false);
+                //$("#furnitureCatalogue").show();
+                //$("#furnitureQuotation").show();
             }
             else {
                 //Inactive form button
-                $("#furnitureCatalogue").hide();
-                $("#furnitureQuotation").hide();
-                $("#quotationTable").hide();
-                $("#sendContact").attr("disabled", true);
+                //$("#furnitureCatalogue").hide();
+                //$("#furnitureQuotation").hide();
+                //$("#quotationTable").hide();
+                //$("#sendContact").attr("disabled", true);
+                $("#sendContact").hide();
             }
         }
+
+        function focusoutZipCode(event) {
+            //displayPopupMessage("ZipCode focus out")
+            if (parseInt($("#zipCode").val()) == $("#zipCode").val() && $("#zipCode").val().length == 5)
+                getDistance($("#zipCode").val());
+            }
 
         //Click on furniture in the catalogue: add to quotation
         function catalogueFurnitureClick(event) {
@@ -328,6 +448,7 @@
 
             if (furnitureQuotation.length == 0) {
                 $("#quotationTable").hide();
+                $("#sendContact").hide();
                 $("#furnitureQuotationBody").append("Aucun meuble dans votre devis");
                 $("#furnitureQuotation > .panel-footer").remove();
             }
@@ -337,6 +458,7 @@
                 if (!$("#quotationTable").is(":visible")) {
                     $("#quotationTable").show("blind", 500);
                 }
+                $("#sendContact").show();
                 setTimeout(function () { $('#quotationTable').goTo() }, 500);
             }
 
@@ -376,6 +498,11 @@
                 keyupZipCode(event);
             });
 
+            //Register keypress event on zip code
+            $("#zipCode").focusout(function (event) {
+                focusoutZipCode(event);
+            });
+
             //Register click event for furniture
             $(".catalogue-furniture").click(function (event) {
                 catalogueFurnitureClick(event);
@@ -388,6 +515,9 @@
             $("#furnitureCatalogue").hide();
             $("#furnitureQuotation").hide();
             $("#quotationTable").hide();
+            $("#sendContact").hide();
+            $("#messagePopup").hide();
+            //$("#messagePopup").show("blind", { direction: "right" }, 1000);
             //$("#furnitureCatalogue").toggle("blind", 500);
                       //{ direction: "vertical" });
             //$("#furnitureCatalogue").show("fold", 10000);

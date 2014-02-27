@@ -1,0 +1,63 @@
+﻿@model List<ConceptoVet.Models.Furniture>
+
+@*Quotation panel with image*@
+<div class="container" style="display: inline-block;">
+    <div class="styled-box-header" style="border-top: 1px solid #dddddd;padding: 10px;background-color: #fb9b22;color: #ffffff;border: 1px solid transparent;border-top-left-radius: 4px;border-top-right-radius: 4px;">
+        Meubles inclus dans votre devis
+    </div>
+    <div class="styled-box-body" style="padding: 10px;border: 1px solid #fb9b22;border-bottom-left-radius: 4px;border-bottom-right-radius: 4px;">
+                    @foreach (ConceptoVet.Models.Furniture furniture in Model) {
+                        if (@furniture.Id == 99) { break; }
+                        for (var i = 1; i <= @furniture.Qty; i++) {
+                            <div class="catalogue-furniture2" style="position: relative;height: 50px;vertical-align: bottom;padding-left: 5px;padding-right: 5px;text-align: center;display: table-cell;">
+                                <img id=@("line"+ furniture.Id) src="@furniture.Picture" reference="@furniture.Id" title="@furniture.Description">
+                            </div>
+                        }
+                    }
+    </div>
+</div>
+<br />
+<br />
+
+@*Quotation table*@
+<div class="container" style="display: inline-block;">
+    <div class="styled-box-header" style="border-top: 1px solid #dddddd;padding: 10px;background-color: #fb9b22;color: #ffffff;border: 1px solid transparent;border-top-left-radius: 4px;border-top-right-radius: 4px;">
+        Votre devis personnalisé
+    </div>
+    <div class="styled-box-body" style="padding: 10px;border: 1px solid #fb9b22;border-bottom-left-radius: 4px;border-bottom-right-radius: 4px;">
+        <table style="border-collapse: collapse;">
+            <thead style="border-bottom: 2px solid #dddddd;">
+                <tr style="border-bottom: 1px solid #dddddd;">
+                    <th style="padding-top: 8px;padding-bottom: 8px; width: 200px; text-align: left">Description</th>
+                    <th style="padding-top: 8px;padding-bottom: 8px; width: 80px; text-align: right">Qté</th>
+                    <th style="padding-top: 8px;padding-bottom: 8px; width: 100px; text-align: right">Prix</th>
+                    <th style="padding-top: 8px;padding-bottom: 8px; width: 100px; text-align: right">Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                        @{decimal total = 0;}
+                        @foreach (ConceptoVet.Models.Furniture furniture in Model) {
+                            <tr style="border-bottom: 1px solid #dddddd;">
+                                <td style="padding-top: 4px;padding-bottom: 4px;">@furniture.Description</td>
+                                <td class="numeric" style="padding-top: 4px;padding-bottom: 4px; text-align: right">@furniture.Qty</td>
+                                <td class="numeric decimal-2" style="padding-top: 4px;padding-bottom: 4px; text-align: right">@string.Format("{0:### ##0.00}", furniture.Retail)</td>
+                                <td class="numeric decimal-2" style="padding-top: 4px;padding-bottom: 4px; text-align: right">@string.Format("{0:### ##0.00}", furniture.Qty * furniture.Retail )</td>
+                            </tr>
+                            @*Last line displayed is for Delivery service*@
+                            total += @furniture.Qty * @furniture.Retail;
+                        }
+            </tbody>
+            <tfoot style="border-top: 2px solid #dddddd;">
+                <tr>
+                    <th style="padding-top: 8px;padding-bottom: 8px; text-align: left">Prix total</th>
+                    <td style="padding-top: 4px;padding-bottom: 4px;"></td>
+                    <td style="padding-top: 4px;padding-bottom: 4px;"></td>
+                    <th id="quotationTotal" class="numeric" style="padding-top: 8px;padding-bottom: 8px; text-align: right">@string.Format("{0:### ##0.00}", total )</th>
+                </tr>
+            
+
+        </tfoot></table>
+    </div>
+</div>
+
+<div class="container">

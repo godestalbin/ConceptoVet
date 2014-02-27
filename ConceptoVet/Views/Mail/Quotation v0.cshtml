@@ -1,0 +1,61 @@
+﻿@model List<ConceptoVet.Models.Furniture>
+
+<div class="container">
+
+    @*Quotation panel with image*@
+    <div class="row">
+        <div class="col-md-8 top-buffer-validation">
+            <div id="furnitureQuotation" class="panel panel-primary">
+                <div class="panel-heading">Meubles inclus dans votre devis</div>
+                <div id="furnitureQuotationBody" class="panel-body">
+                    @foreach (ConceptoVet.Models.Furniture furniture in Model) {
+                        for (var i = 1; i <= @furniture.Qty; i++) {
+                            <img id=@("line"+ furniture.Id) src="@furniture.Picture" reference="@furniture.Id" title="@furniture.Description">
+                        }
+                        }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Quotation table*@
+    <div id="quotationTable" class="row">
+        <div class="col-md-8 top-buffer-validation">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Votre devis personnalisé</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th class="numeric">Qté</th>
+                            <th class="numeric">Prix</th>
+                            <th class="numeric">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{decimal total = 0;}
+                        @foreach (ConceptoVet.Models.Furniture furniture in Model) {
+                            <tr>
+                                <td>@furniture.Description</td>
+                                <td class="numeric">@furniture.Qty</td>
+                                <td class="numeric decimal-2">@furniture.Retail</td>
+                                <td class="numeric decimal-2">@(furniture.Qty * furniture.Retail)</td>
+                            </tr>
+                            total += @furniture.Qty * @furniture.Retail;
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Prix total</th>
+                            <td></td>
+                            <td></td>
+                            <th id="quotationTotal" class="numeric">@total</th>
+                        </tr>
+                    </tfoot >
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div> @*Container*@
+
