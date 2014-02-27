@@ -14,7 +14,7 @@ namespace ConceptoVet.Controllers
         {
             Contact contact = new Contact();
             contact.name = "go";
-            contact.phone = "12121212";
+            contact.phone = "0123456789";
             contact.mail = "godestalbin@gmail.com";
             contact.zipCode = "4516";
             return View(contact);

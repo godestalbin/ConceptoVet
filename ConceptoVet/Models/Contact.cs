@@ -16,7 +16,7 @@ namespace ConceptoVet.Models
         public String name { get; set; }
         [DisplayName("Téléphone:")]
         [Required(ErrorMessage = "Donnée obligatoire")]
-        [RegularExpression(@"[0-9]{8}", ErrorMessage = "Exactement huit chiffres")]
+        [RegularExpression(@"^0[1-9][0-9]{8}", ErrorMessage = "Exactement huit chiffres (zéro en premier chiffre)")]
         public String phone { get; set; }
         [DisplayName("Mail:")]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "Adresse mail incorrecte")]
