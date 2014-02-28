@@ -228,11 +228,11 @@
         </div>
     </div>
 
-    <div class="row">
+    <div id="sendContactRow" class="row nodisplay">
         <div class="col-md-1">
         </div>
         <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary nodisplay" onclick="PostQuotation();"/>
+        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
         </div>
     </div>
 
@@ -513,7 +513,8 @@
 
             //Inactive form button
             //$("#sendContact").attr("disabled", true);
-            //$("#sendContact").hide();
+            $("#sendContact").hide();
+            $("#sendContactRow").show();
 
             //$("#furnitureCatalogue").show();
             //$("#furnitureQuotation").hide();
