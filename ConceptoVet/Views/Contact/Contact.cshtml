@@ -126,7 +126,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-8 top-buffer-validation">
-            <div id="furnitureCatalogue" class="panel panel-primary">
+            <div id="furnitureCatalogue" class="panel panel-primary nodisplay">
                 <div class="panel-heading">Catalogue des meubles ConceptoVet</div>
                 <div id="furnitureCatalogueBody" class="panel-body">
                     <div class="catalogue-furniture">
@@ -179,7 +179,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-8 top-buffer-validation">
-            <div id="furnitureQuotation" class="panel panel-primary">
+            <div id="furnitureQuotation" class="panel panel-primary nodisplay">
                 <div class="panel-heading">Meubles inclus dans votre devis</div>
                 <div id="furnitureQuotationBody" class="panel-body">
 @*                    <img id="ref"+1" src="/Images/Chiens 205.png" reference="1" retail="1200" title="Meuble chiens 205cm">
@@ -192,7 +192,7 @@
     </div>
 
     @*Quotation table*@
-    <div id="quotationTable" class="row">
+    <div id="quotationTable" class="row nodisplay">
         <div class="col-md-1">
         </div>
         <div class="col-md-8 top-buffer-validation">
@@ -232,7 +232,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
+        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary nodisplay" onclick="PostQuotation();"/>
         </div>
     </div>
 
@@ -240,7 +240,7 @@
 }
     </div> @*Container*@
 
-<div id="messagePopup" class="alert alert-success popup-panel">Devis envoyé à l'adresse mail go@go.com</div>
+<div id="messagePopup" class="alert alert-success popup-panel" style="display: none">Devis envoyé à l'adresse mail go@go.com</div>
 
 @section Scripts {
     @*Google API key*@
@@ -279,6 +279,8 @@
                         else serviceFee = 2082.82;
                         if (estimatedDistance != null) {
                             displayPopupMessage("Distance estimée = " + estimatedDistance + " kilomètres");
+                            //$("#furnitureCatalogue").removeClass("nodisplay");
+                            //$("#furnitureCatalogue").show();
                             $("#furnitureCatalogue").show("blind", 500);
                             setTimeout(function () { $("#furnitureQuotation").show("blind", 500) }, 400);
                             setTimeout(function () { $('#furnitureCatalogue').goTo() }, 900);
@@ -304,6 +306,7 @@
         //Post quotation's data to the server
         //http://www.webcognoscere.com/post/How-to-POST-a-JSON-object-to-a-Controller-Action.aspx
         function PostQuotation() {
+            //Retrieve contact data in the form
             contact = new Object();
             contact.name = $("#name").val();
             contact.phone = $("#phone").val();
@@ -512,11 +515,11 @@
             //$("#sendContact").attr("disabled", true);
             //$("#sendContact").hide();
 
-            $("#furnitureCatalogue").hide();
-            $("#furnitureQuotation").hide();
-            $("#quotationTable").hide();
-            $("#sendContact").hide();
-            $("#messagePopup").hide();
+            //$("#furnitureCatalogue").show();
+            //$("#furnitureQuotation").hide();
+            //$("#quotationTable").hide();
+            //$("#sendContact").hide();
+            //$("#messagePopup").hide();
             //$("#messagePopup").show("blind", { direction: "right" }, 1000);
             //$("#furnitureCatalogue").toggle("blind", 500);
                       //{ direction: "vertical" });

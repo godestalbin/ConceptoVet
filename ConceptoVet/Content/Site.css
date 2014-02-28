@@ -156,3 +156,7 @@ tfoot {
     /*width: 600px;*/
     /*margin-left: -300px;*/
 }
+
+.nodisplay {
+    display: none;
+}
