@@ -16,7 +16,7 @@ namespace ConceptoVet.Controllers
             contact.name = "go";
             contact.phone = "0123456789";
             contact.mail = "godestalbin@gmail.com";
-            contact.zipCode = "4516";
+            contact.zipCode = "45160";
             return View(contact);
         }
 

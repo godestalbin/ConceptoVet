@@ -9,7 +9,7 @@
 
 
 @using (Html.BeginForm("Contact", "Contact",
-                 FormMethod.Post, new { role = "form" }))
+                 FormMethod.Post, new { role = "form", id = "contactForm" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -114,11 +114,15 @@
             @Html.TextBoxFor(model => model.zipCode, new { @class = "form-control"})
         </div>
         <div class="col-md-3 top-buffer-validation">
+            <div id="city"></div>
             @Html.ValidationMessageFor(model => model.zipCode)
+            <div id="unknownZipCode" class="field-validation-error nodisplay">Code postal inconnu</div>
         </div>
         <div class="col-md-1">
         </div>
     </div>
+@*    <div id="debugServiceFee"></div>
+    <div id="debugDistance"></div>*@
 
 
     @*Furniture catalogue with image*@
@@ -130,43 +134,43 @@
                 <div class="panel-heading">Catalogue des meubles ConceptoVet</div>
                 <div id="furnitureCatalogueBody" class="panel-body">
                     <div class="catalogue-furniture">
-                        <img id="ref"+1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="2300" title="Meuble chiens 205cm">
+                        <img id="ref1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="2300" title="Meuble chiens 205cm" alt="alternative text">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble chiens 275cm">
+                        <img id="ref2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble chiens 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble chats 205cm">
+                        <img id="ref+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble chats 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble chats 275cm">
+                        <img id="ref4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble chats 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+5" src="https://s3.amazonaws.com/conceptovet/images/Soins 135.png" reference="5" retail="1300" title="Meuble soins sans tiroir 135cm">
+                        <img id="ref5" src="https://s3.amazonaws.com/conceptovet/images/Soins 135.png" reference="5" retail="1300" title="Meuble soins sans tiroir 135cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+6" src="https://s3.amazonaws.com/conceptovet/images/Soins 205.png" reference="6" retail="1700" title="Meuble soins sans tiroir 205cm">
+                        <img id="ref6" src="https://s3.amazonaws.com/conceptovet/images/Soins 205.png" reference="6" retail="1700" title="Meuble soins sans tiroir 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+7" src="https://s3.amazonaws.com/conceptovet/images/Soins 275.png" reference="7" retail="2200" title="Meuble soins sans tiroir 275cm">
+                        <img id="ref7" src="https://s3.amazonaws.com/conceptovet/images/Soins 275.png" reference="7" retail="2200" title="Meuble soins sans tiroir 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+8" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 135.png" reference="8" retail="1800" title="Meuble soins avec tiroirs 135cm">
+                        <img id="ref8" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 135.png" reference="8" retail="1800" title="Meuble soins avec tiroirs 135cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+9" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 205.png" reference="9" retail="2700" title="Meuble soins avec tiroirs 205cm">
+                        <img id="ref9" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 205.png" reference="9" retail="2700" title="Meuble soins avec tiroirs 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+10" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 275.png" reference="10" retail="3700" title="Meuble soins avec tiroirs 275cm">
+                        <img id="ref10" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 275.png" reference="10" retail="3700" title="Meuble soins avec tiroirs 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+11" src="https://s3.amazonaws.com/conceptovet/images/Accueil droit.png" reference="11" retail="1500" title="Meuble accueil simple droit">
+                        <img id="ref11" src="https://s3.amazonaws.com/conceptovet/images/Accueil droit.png" reference="11" retail="1500" title="Meuble accueil simple droit">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+12" src="https://s3.amazonaws.com/conceptovet/images/Accueil gauche.png" reference="12" retail="1500" title="Meuble accueil simple gauche">
+                        <img id="ref12" src="https://s3.amazonaws.com/conceptovet/images/Accueil gauche.png" reference="12" retail="1500" title="Meuble accueil simple gauche">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref"+13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Meuble accueil double">
+                        <img id="ref13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Meuble accueil double">
                     </div>
                 </div>
                 <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre devis</div>
@@ -266,41 +270,71 @@
 
         //Process the distance returned by Google Maps matrix API
         function processDistance(response, status) {
+            //displayPopupMessage("processDistance");
+            estimatedDistance = null;
+            //$("#debugDistance").html("Distance=" + estimatedDistance);
             if (status == google.maps.DistanceMatrixStatus.OK) {
                 if (response.rows.length >= 1) {
-                    if (response.rows[0].elements.length >= 1) {
-                        estimatedDistance = response.rows[0].elements[0].distance.value / 1000;
-                        //$('#debugText').empty();
-                        //$('#debugText').append(response.rows[0].elements[0].distance.text);
-                        //Set the appropriate value for transport and installation fee
-                        if (estimatedDistance > 800) serviceFee = 5239.92;
-                        else if (estimatedDistance > 600) serviceFee = 4270.85;
-                        else if (estimatedDistance > 400) serviceFee = 3390.53;
-                        else serviceFee = 2082.82;
-                        if (estimatedDistance != null) {
-                            displayPopupMessage("Distance estimée = " + estimatedDistance + " kilomètres");
-                            //$("#furnitureCatalogue").removeClass("nodisplay");
-                            //$("#furnitureCatalogue").show();
-                            $("#furnitureCatalogue").show("blind", 500);
-                            setTimeout(function () { $("#furnitureQuotation").show("blind", 500) }, 400);
-                            setTimeout(function () { $('#furnitureCatalogue').goTo() }, 900);
-                            PostContact(); //Record contact's data
+                    var destination = response.destinationAddresses[0].split(',');
+                    if ($("#zipCode").val() == destination[0].substring(0, 5)) {
+                        var city = destination[0].substring(6);
+                        //displayPopupMessage(city);
+                        $("#city").show();
+                        $("#city").html(city) //Show city
+                        if (response.rows[0].elements.length >= 1) {
+                            estimatedDistance = response.rows[0].elements[0].distance.value / 1000;
+                            //$("#debugDistance").html("Distance=" + estimatedDistance);
+                            //$('#debugText').empty();
+                            //$('#debugText').append(response.rows[0].elements[0].distance.text);
+                            //Set the appropriate value for transport and installation fee
+                            if (estimatedDistance > 800) serviceFee = 5239.92;
+                            else if (estimatedDistance > 600) serviceFee = 4270.85;
+                            else if (estimatedDistance > 400) serviceFee = 3390.53;
+                            else serviceFee = 2082.82;
+                            //$("#debugServiceFee").html("Service fee=" + serviceFee);
+                            if (estimatedDistance != null) {
+                                //displayPopupMessage("Distance estimée = " + estimatedDistance + " kilomètres");
+                                //$("#furnitureCatalogue").removeClass("nodisplay");
+                                //$("#furnitureCatalogue").show();
+                                //PostContact(); //Record contact's data
+                            }
+                            //Refresh the quotation
+                            //UpdateQuotationGrid();
+                            //$("input[type=submit]").removeAttr("disabled");
                         }
-                        //Refresh the quotation
-                        //UpdateQuotationGrid();
-                        //$("input[type=submit]").removeAttr("disabled");
+                    }
+                    else { //Non existant zip code
+                        estimatedDistance = null;
+                        //Display error message
+                        $("#unknownZipCode").show();
+                        
                     }
                 }
             }
+            controlContactData();
+        }
+
+        function showClientError(message) {
+            var $div = $('.validation-summary-errors');
+            if ($div.length == 0) {
+                $div = $('<div class="validation-summary-errors">');
+                $div.html('<ul></ul>');
+            }
+            $div.find('ul').append($('<li>').text(message));
         }
 
         //Post contact's data to the server
         //This is called when the zipcode has been provided and distance has been calculated
         function PostContact() {
             //alert($("#zipCode").val());
-            $.post("/Contact/Contact",
-                { name: $("#name").val(), phone: $("#phone").val(), mail: $("#mail").val(), zipCode: $("#zipCode").val() }
-            );
+            if (postedContact != $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val()) {
+                //displayPopupMessage("Posting contact");
+                postedContact = $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val();
+                //TMP
+                $.post("/Contact/Contact",
+                    { name: $("#name").val(), phone: $("#phone").val(), mail: $("#mail").val(), zipCode: $("#zipCode").val() }
+                );
+            }
         }
 
         //Post quotation's data to the server
@@ -337,7 +371,7 @@
             //Get the service fee as funiture with the ID 99
             furniture = new Object();
             furniture.Id = 99;
-            furniture.Description = "Transport et installation sur site";
+            furniture.Description = "Transport et installation dans le " + $("#zipCode").val().substring(0, 2);
             furniture.Qty = 1;
             furniture.Retail = serviceFee;
             furnitures.push(furniture);
@@ -350,43 +384,68 @@
             });
 
             //Display popup message to show mail was sent
-            displayPopupMessage("Le devis à été envoyé à l'adresse mail " + $("#mail").val());
+            //alert($("#sendQuotation").offset().top);
+            displayPopupMessage("Le devis à été envoyé à l'adresse mail: " + $("#mail").val(), 10000, 300, $("#sendContact").offset().top - $(window).scrollTop() - 50);
         }
 
         //Display message in a popup
-        function displayPopupMessage(message, delay) {
+        function displayPopupMessage(message, delay, width, top) {
             delay = typeof delay !== 'undefined' ? delay : 2000; //Default delay is 2 sec
+            width = typeof width !== 'undefined' ? width : 300; //Default delay is 300px
+            top = typeof top !== 'undefined' ? top : 5;
+            $("#messagePopup").css("width", width);
+            $("#messagePopup").css("top", top);
             $("#messagePopup").text(message);
-            $("#messagePopup").toggle("blind", 500);
-            setTimeout(function () { $("#messagePopup").toggle("blind", 500) }, delay);
+            $("#messagePopup").toggle("blind", { direction: "left" }, 500);
+            setTimeout(function () { $("#messagePopup").toggle("blind", { direction: "left" }, 500) }, delay);
+        }
+
+        function keyupName(event) {
+            controlContactData();
+        }
+
+        function keyupPhone(event) {
+            controlContactData();
+        }
+
+        function keyupMail(event) {
+            controlContactData();
         }
 
         //Key released (generating characters) in the zipCode input
         function keyupZipCode(event) {
-
-            //Zip code with exactly 5 digits
-            if (parseInt($("#zipCode").val()) == $("#zipCode").val() && $("#zipCode").val().length == 5) {
-                //getDistance($("#zipCode").val());
-                //Active form button
-                //$("#sendContact").attr("disabled", false);
-                //$("#furnitureCatalogue").show();
-                //$("#furnitureQuotation").show();
-            }
+            $("#city").hide();
+            $("#unknownZipCode").hide();
+            if ($("#zipCode").val().match("^[0-9]{5}$")) //exactly 5 digits
+                getDistance($("#zipCode").val());
             else {
-                //Inactive form button
-                //$("#furnitureCatalogue").hide();
-                //$("#furnitureQuotation").hide();
-                //$("#quotationTable").hide();
-                //$("#sendContact").attr("disabled", true);
-                $("#sendContact").hide();
+                serviceFee = null;
+                controlContactData();
             }
         }
 
-        function focusoutZipCode(event) {
-            //displayPopupMessage("ZipCode focus out")
-            if (parseInt($("#zipCode").val()) == $("#zipCode").val() && $("#zipCode").val().length == 5)
-                getDistance($("#zipCode").val());
+        //Control validity of contact data
+        //If valid display quotation else hide quotation
+        function controlContactData() {
+            if (serviceFee != null && $("#contactForm").valid()) {
+                //displayPopupMessage("Valid", 500);
+                PostContact();
+                if (!$("#furnitureCatalogue").is(":visible")) {
+                    $("#furnitureCatalogue").show("blind", 500);
+                    setTimeout(function () { $("#furnitureQuotation").show("blind", 500) }, 400);
+                }
+                //setTimeout(function () { $('#furnitureCatalogue').goTo() }, 900);
+
+                UpdateQuotation();
             }
+            else {
+                //displayPopupMessage("Invalid", 500);
+                $("#furnitureCatalogue").hide();
+                $("#furnitureQuotation").hide();
+                $("#quotationTable").hide();
+                $("#sendContact").hide();
+            }
+        }
 
         //Click on furniture in the catalogue: add to quotation
         function catalogueFurnitureClick(event) {
@@ -438,7 +497,7 @@
             }
 
             //Add the service
-            $('#quotationTable tbody').append("<tr><td>Transport et installation sur site</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            $('#quotationTable tbody').append("<tr><td>Transport et installation dans le " + $("#zipCode").val().substring(0,2) + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
             total += serviceFee;
 
             //Add the total
@@ -467,6 +526,22 @@
 
         } //function UpdateQuotation
 
+        function setToolTip(element, toolTip) {
+            element.qtip({ // Grab some elements to apply the tooltip to
+                content: {
+                    text: toolTip
+                },
+                position: {
+                my: 'top center',  // Position my top left...
+                at: 'bottom center', // at the bottom right of...
+                //target: element //$('.selector') // my target
+                },
+                style: {
+                    classes: 'qtip-rounded'
+                }
+            })
+        }
+
         //Format number with space for thousand separator and comma for decimal separator
         function formatNumber(number) {
             number = number.toFixed(2) + '';
@@ -493,17 +568,51 @@
         //jQuery Document ready
         var serviceFee; // = 2082.82; //3390.53    4270.85    5239.92
         var furnitureQuotation = new Array(); //Furnitures in the quotation: contains img from the catalogue
+        var postedContact = "";
 
         $(document).ready(function () {
+
+            //Register keypress event on name
+            $("#name").keyup(function (event) {
+                //keypupName(event);
+                controlContactData();
+            });
+            //$("#name").keydown(function (event) { //backspace and delete
+            //    if (event.keyCode == 8 || event.keyCode == 46) controlContactData();
+//            });
+
+            //Register keypress event on phone
+            $("#phone").keyup(function (event) {
+                //keyupPhone(event);
+                controlContactData();
+            });
+            //$("#phone").keydown(function (event) {
+            //    if (event.keyCode == 8 || event.keyCode == 46) controlContactData();
+            //});
+
+            //Register keypress event on mail
+            $("#mail").keyup(function (event) {
+                //keyupMail(event);
+                controlContactData();
+            });
+            //$("#mail").keydown(function (event) {
+            //    if (event.keyCode == 8 || event.keyCode == 46) controlContactData();
+            //});
 
             //Register keypress event on zip code
             $("#zipCode").keyup(function (event) {
                 keyupZipCode(event);
             });
+            $("#zipCode").keydown(function (event) {
+                if (event.keyCode == 8 || event.keyCode == 46) {
+                    serviceFee = null;
+                    controlContactData();
+                }
+            });
 
             //Register keypress event on zip code
             $("#zipCode").focusout(function (event) {
-                focusoutZipCode(event);
+                controlContactData();
             });
 
             //Register click event for furniture
@@ -512,7 +621,6 @@
             });
 
             //Inactive form button
-            //$("#sendContact").attr("disabled", true);
             $("#sendContact").hide();
             $("#sendContactRow").show();
 
@@ -526,7 +634,13 @@
                       //{ direction: "vertical" });
             //$("#furnitureCatalogue").show("fold", 10000);
 
-            displayPopupMessage("Remplissez tous les champs pour accéder le devis en ligne", 10000);
+            displayPopupMessage("Remplissez tous les champs pour accéder le devis en ligne", 10000, 410, $("#phone").offset().top);
+
+            $('#furnitureCatalogueBody > div').each(function () {
+                //alert($(this).find('img').attr('title'));
+                setToolTip($(this), $(this).find('img').attr('title'));
+            });
+
         });
 
     </script>
