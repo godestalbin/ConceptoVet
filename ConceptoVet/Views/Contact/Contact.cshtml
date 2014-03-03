@@ -371,7 +371,7 @@
             //Get the service fee as funiture with the ID 99
             furniture = new Object();
             furniture.Id = 99;
-            furniture.Description = "Transport et installation dans le " + $("#zipCode").val().substring(0, 2);
+            furniture.Description = "Transport et installation à " + $("#city").html();
             furniture.Qty = 1;
             furniture.Retail = serviceFee;
             furnitures.push(furniture);
@@ -497,7 +497,7 @@
             }
 
             //Add the service
-            $('#quotationTable tbody').append("<tr><td>Transport et installation dans le " + $("#zipCode").val().substring(0,2) + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            $('#quotationTable tbody').append("<tr><td>Transport et installation à " + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
             total += serviceFee;
 
             //Add the total
