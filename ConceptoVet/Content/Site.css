@@ -160,3 +160,13 @@ tfoot {
 .nodisplay {
     display: none;
 }
+
+.float {
+    float: left;
+}
+
+.border {
+    border: solid 1px black;
+    /*display: inline;*/
+    float: left;
+}

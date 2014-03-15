@@ -25,152 +25,183 @@
 	</div>*@
 
     <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-3">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
             @Html.LabelFor(model => model.name)
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 float">
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
     <div class="row">
-        <div class="col-md-1">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
+            @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
         </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.name, new { @class = "form-control"})
-        </div>
-        <div class="col-md-3 top-buffer-validation">
+        <div class="col-md-3 top-buffer-validation float">
             @Html.ValidationMessageFor(model => model.name)
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
 
     <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-3">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
             @Html.LabelFor(model => model.phone)
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 float">
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
     <div class="row">
-        <div class="col-md-1">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
+            @Html.TextBoxFor(model => model.phone, new { @class = "form-control" })
         </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.phone, new { @class = "form-control"})
-        </div>
-        <div class="col-md-3 top-buffer-validation">
+        <div class="col-md-3 top-buffer-validation float">
             @Html.ValidationMessageFor(model => model.phone)
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
 
     <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-3">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
             @Html.LabelFor(model => model.mail)
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 float">
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
     <div class="row">
-        <div class="col-md-1">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
+            @Html.TextBoxFor(model => model.mail, new { @class = "form-control" })
         </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.mail, new { @class = "form-control"})
-        </div>
-        <div class="col-md-3 top-buffer-validation">
+        <div class="col-md-3 top-buffer-validation float">
             @Html.ValidationMessageFor(model => model.mail)
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
 
     <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-3">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
             @Html.LabelFor(model => model.zipCode)
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 float">
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
     <div class="row">
-        <div class="col-md-1">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-3 float">
+            @Html.TextBoxFor(model => model.zipCode, new { @class = "form-control" })
         </div>
-        <div class="col-md-3">
-            @Html.TextBoxFor(model => model.zipCode, new { @class = "form-control"})
-        </div>
-        <div class="col-md-3 top-buffer-validation">
+        <div class="col-md-3 top-buffer-validationfloat">
             <div id="city"></div>
             @Html.ValidationMessageFor(model => model.zipCode)
             <div id="unknownZipCode" class="field-validation-error nodisplay">Code postal inconnu</div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-3 float">
         </div>
+        <div class="col-md-3 float">
+        </div>
+@*        <div class="col-md-1">
+        </div>*@
     </div>
 @*    <div id="debugServiceFee"></div>
     <div id="debugDistance"></div>*@
 
-
     @*Furniture catalogue with image*@
     <div class="row top-buffer">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-8 top-buffer-validation">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-12 top-buffer-validation">
             <div id="furnitureCatalogue" class="panel panel-primary nodisplay">
                 <div class="panel-heading">Catalogue des meubles ConceptoVet</div>
                 <div id="furnitureCatalogueBody" class="panel-body">
                     <div class="catalogue-furniture">
-                        <img id="ref1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="2300" title="Meuble chiens 205cm" alt="alternative text">
+                        <img id="ref1" src="https://s3.amazonaws.com/conceptovet/images/Chiens 205.png" reference="1" retail="2300" title="Meuble Aliments Profondeur 80 cm x 205cm" alt="alternative text">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble chiens 275cm">
+                        <img id="ref2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble Aliments Profondeur 80 cm x 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble chats 205cm">
+                        <img id="ref+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble Aliments Profondeur 55 cm x 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble chats 275cm">
+                        <img id="ref4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble Aliments Profondeur 55 cm x 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref5" src="https://s3.amazonaws.com/conceptovet/images/Soins 135.png" reference="5" retail="1300" title="Meuble soins sans tiroir 135cm">
+                        <img id="ref5" src="https://s3.amazonaws.com/conceptovet/images/Soins 135.png" reference="5" retail="1300" title="Meuble Soins Profondeur 40 cm x 135cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref6" src="https://s3.amazonaws.com/conceptovet/images/Soins 205.png" reference="6" retail="1700" title="Meuble soins sans tiroir 205cm">
+                        <img id="ref6" src="https://s3.amazonaws.com/conceptovet/images/Soins 205.png" reference="6" retail="1700" title="Meuble Soins Profondeur 40 cm x 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref7" src="https://s3.amazonaws.com/conceptovet/images/Soins 275.png" reference="7" retail="2200" title="Meuble soins sans tiroir 275cm">
+                        <img id="ref7" src="https://s3.amazonaws.com/conceptovet/images/Soins 275.png" reference="7" retail="2200" title="Meuble Soins Profondeur 40 cm x 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref8" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 135.png" reference="8" retail="1800" title="Meuble soins avec tiroirs 135cm">
+                        <img id="ref8" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 135.png" reference="8" retail="1800" title="Meuble Soins avec Tiroirs Profondeur 44 cm x 135cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref9" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 205.png" reference="9" retail="2700" title="Meuble soins avec tiroirs 205cm">
+                        <img id="ref9" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 205.png" reference="9" retail="2700" title="Meuble Soins avec Tiroirs Profondeur 44 cm x 205cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref10" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 275.png" reference="10" retail="3700" title="Meuble soins avec tiroirs 275cm">
+                        <img id="ref10" src="https://s3.amazonaws.com/conceptovet/images/Soins tiroirs 275.png" reference="10" retail="3700" title="Meuble Soins avec Tiroirs Profondeur 44 cm x 275cm">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref11" src="https://s3.amazonaws.com/conceptovet/images/Accueil droit.png" reference="11" retail="1500" title="Meuble accueil simple droit">
+                        <img id="ref11" src="https://s3.amazonaws.com/conceptovet/images/Accueil droit.png" reference="11" retail="1500" title="Comptoir Individuel Largeur 1.20 m x Profondeur 80 cm droit">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref12" src="https://s3.amazonaws.com/conceptovet/images/Accueil gauche.png" reference="12" retail="1500" title="Meuble accueil simple gauche">
+                        <img id="ref12" src="https://s3.amazonaws.com/conceptovet/images/Accueil gauche.png" reference="12" retail="1500" title="Comptoir Individuel Largeur 1.20 m x Profondeur 80 cm gauche">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Meuble accueil double">
+                        <img id="ref13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Comptoir Double Largeur 2.10 m x Profondeur 80 cm">
                     </div>
                 </div>
                 <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre devis</div>
@@ -180,9 +211,9 @@
 
     @*Quotation panel with image*@
     <div class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-8 top-buffer-validation">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-12 top-buffer-validation">
             <div id="furnitureQuotation" class="panel panel-primary nodisplay">
                 <div class="panel-heading">Meubles inclus dans votre devis</div>
                 <div id="furnitureQuotationBody" class="panel-body">
@@ -197,9 +228,9 @@
 
     @*Quotation table*@
     <div id="quotationTable" class="row nodisplay">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-8 top-buffer-validation">
+@*        <div class="col-md-1">
+        </div>*@
+        <div class="col-md-12 top-buffer-validation">
             <div class="panel panel-primary">
                 <div class="panel-heading">Votre devis personnalisé</div>
                 <table class="table">
@@ -232,17 +263,18 @@
         </div>
     </div>
 
+
     <div id="sendContactRow" class="row nodisplay">
-        <div class="col-md-1">
-        </div>
+@*        <div class="col-md-1">
+        </div>*@
         <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="button" value="Je veux recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
+        <input id="sendContact" type="button" value="Je souhaite recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
         </div>
     </div>
 
     </fieldset>
-}
-    </div> @*Container*@
+} @*Html.BeginForm*@
+        </div> @*container*@
 
 <div id="messagePopup" class="alert alert-success popup-panel" style="display: none">Devis envoyé à l'adresse mail go@go.com</div>
 
@@ -287,10 +319,11 @@
                             //$('#debugText').empty();
                             //$('#debugText').append(response.rows[0].elements[0].distance.text);
                             //Set the appropriate value for transport and installation fee
-                            if (estimatedDistance > 800) serviceFee = 5239.92;
-                            else if (estimatedDistance > 600) serviceFee = 4270.85;
-                            else if (estimatedDistance > 400) serviceFee = 3390.53;
-                            else serviceFee = 2082.82;
+                            if (estimatedDistance > 800) serviceFee = 5200;
+                            else if (estimatedDistance > 600) serviceFee = 4400;
+                            else if (estimatedDistance > 400) serviceFee = 3600;
+                            else if (estimatedDistance > 200) serviceFee = 2800;
+                            else serviceFee = 2000;
                             //$("#debugServiceFee").html("Service fee=" + serviceFee);
                             if (estimatedDistance != null) {
                                 //displayPopupMessage("Distance estimée = " + estimatedDistance + " kilomètres");
