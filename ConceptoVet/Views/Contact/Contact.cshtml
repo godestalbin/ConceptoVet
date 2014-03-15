@@ -204,7 +204,7 @@
                         <img id="ref13" src="https://s3.amazonaws.com/conceptovet/images/Accueil double.png" reference="13" retail="2400" title="Comptoir Double Largeur 2.10 m x Profondeur 80 cm">
                     </div>
                 </div>
-                <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre devis</div>
+                <div class="panel-footer">Cliquez sur les meubles pour les ajouter à votre estimation</div>
             </div>
         </div>
     </div>
@@ -268,7 +268,7 @@
 @*        <div class="col-md-1">
         </div>*@
         <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="button" value="Je souhaite recevoir une copie de ce devis" class="btn btn-primary" onclick="PostQuotation();"/>
+        <input id="sendContact" type="button" value="Je souhaite recevoir une copie de cette estimation" class="btn btn-primary" onclick="PostQuotation();"/>
         </div>
     </div>
 
@@ -276,7 +276,7 @@
 } @*Html.BeginForm*@
         </div> @*container*@
 
-<div id="messagePopup" class="alert alert-success popup-panel" style="display: none">Devis envoyé à l'adresse mail go@go.com</div>
+<div id="messagePopup" class="alert alert-success popup-panel" style="display: none">Estimation envoyé à l'adresse mail go@go.com</div>
 
 @section Scripts {
     @*Google API key*@
@@ -418,7 +418,7 @@
 
             //Display popup message to show mail was sent
             //alert($("#sendQuotation").offset().top);
-            displayPopupMessage("Le devis à été envoyé à l'adresse mail: " + $("#mail").val(), 10000, 300, $("#sendContact").offset().top - $(window).scrollTop() - 50);
+            displayPopupMessage("L'estimation à été envoyée à l'adresse mail: " + $("#mail").val(), 10000, 300, $("#sendContact").offset().top - $(window).scrollTop() - 50);
         }
 
         //Display message in a popup
@@ -549,7 +549,7 @@
             }
             else {
                 if ( ! $("#furnitureQuotation > .panel-footer").length )
-                    $("#furnitureQuotation").append("<div class='panel-footer'>Cliquez sur les meubles pour les supprimer de votre devis</div>");
+                    $("#furnitureQuotation").append("<div class='panel-footer'>Cliquez sur les meubles pour les supprimer de votre estimation</div>");
                 if (!$("#quotationTable").is(":visible")) {
                     $("#quotationTable").show("blind", 500);
                 }
@@ -667,7 +667,7 @@
                       //{ direction: "vertical" });
             //$("#furnitureCatalogue").show("fold", 10000);
 
-            displayPopupMessage("Remplissez tous les champs pour accéder le devis en ligne", 10000, 410, $("#phone").offset().top);
+            displayPopupMessage("Remplissez tous les champs pour accéder l'estimation en ligne", 10000, 410, $("#phone").offset().top);
 
             $('#furnitureCatalogueBody > div').each(function () {
                 //alert($(this).find('img').attr('title'));
