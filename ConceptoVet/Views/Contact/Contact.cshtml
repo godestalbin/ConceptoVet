@@ -215,11 +215,11 @@
         </div>*@
         <div class="col-md-12 top-buffer-validation">
             <div id="furnitureQuotation" class="panel panel-primary nodisplay">
-                <div class="panel-heading">Meubles inclus dans votre devis</div>
+                <div class="panel-heading">Meubles inclus dans votre estimation</div>
                 <div id="furnitureQuotationBody" class="panel-body">
 @*                    <img id="ref"+1" src="/Images/Chiens 205.png" reference="1" retail="1200" title="Meuble chiens 205cm">
                     <img id="ref"+2" src="/Images/Chiens 275.png" reference="2" retail="1400" title="Meuble chiens 275cm">*@
-                    Aucun meuble dans votre devis
+                    Aucun meuble dans votre estimation
                 </div>
                 @*<div class="panel-footer">Cliquez sur les meubles pour les supprimer de votre devis</div>*@
             </div>
@@ -232,7 +232,7 @@
         </div>*@
         <div class="col-md-12 top-buffer-validation">
             <div class="panel panel-primary">
-                <div class="panel-heading">Votre devis personnalisé</div>
+                <div class="panel-heading">Votre estimation personnalisée</div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -404,7 +404,7 @@
             //Get the service fee as funiture with the ID 99
             furniture = new Object();
             furniture.Id = 99;
-            furniture.Description = "Transport et installation à " + $("#city").html();
+            furniture.Description = "Transport et installation à proximité de " + $("#city").html();
             furniture.Qty = 1;
             furniture.Retail = serviceFee;
             furnitures.push(furniture);
@@ -530,7 +530,7 @@
             }
 
             //Add the service
-            $('#quotationTable tbody').append("<tr><td>Transport et installation à " + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            $('#quotationTable tbody').append("<tr><td>Transport et installation à proximité de " + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
             total += serviceFee;
 
             //Add the total
@@ -544,7 +544,7 @@
             if (furnitureQuotation.length == 0) {
                 $("#quotationTable").hide();
                 $("#sendContact").hide();
-                $("#furnitureQuotationBody").append("Aucun meuble dans votre devis");
+                $("#furnitureQuotationBody").append("Aucun meuble dans votre estimation");
                 $("#furnitureQuotation > .panel-footer").remove();
             }
             else {
