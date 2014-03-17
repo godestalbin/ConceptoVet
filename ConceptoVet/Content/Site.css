@@ -165,6 +165,10 @@ tfoot {
     float: left;
 }
 
+.fixed-width-label {
+    width: 150px;
+}
+
 .border {
     border: solid 1px black;
     /*display: inline;*/

@@ -59,8 +59,8 @@ namespace ConceptoVet.Controllers
                 x.Subject = "Créadismo - Nouveau contact"; //Resources.Welcome;
                 x.ViewName = "Contact"; //Views/Mail/Welcome
                 //x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
-                //x.To.Add("godestalbin@gmail.com, axelle.munch@gmail.com"); //user.EmailAddress);
-                x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
+                x.To.Add("godestalbin@gmail.com, axelle.munch@gmail.com"); //user.EmailAddress);
+                //x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
                 //x.LinkedResources = resources; //Embedded images - Commute signature
             });
         }
@@ -80,7 +80,7 @@ namespace ConceptoVet.Controllers
                 x.ViewName = "ContactData"; //Views/Mail/Welcome
                 x.To.Add(quotation.contact.mail); //user.EmailAddress);
                 //x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
-                //x.Bcc.Add("godestalbin@gmail.com, axelle.munch@gmail.com"); //send me a copy of the mail
+                x.Bcc.Add("godestalbin@gmail.com, axelle.munch@gmail.com"); //send me a copy of the mail
                 //x.LinkedResources = resources; //Embedded images - Commute signature
             });
         }
