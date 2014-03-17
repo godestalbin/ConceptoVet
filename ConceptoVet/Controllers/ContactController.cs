@@ -13,10 +13,10 @@ namespace ConceptoVet.Controllers
         public ActionResult Contact()
         {
             Contact contact = new Contact();
-            //contact.name = "go";
-            //contact.phone = "0123456789";
-            //contact.mail = "godestalbin@gmail.com";
-            //contact.zipCode = "45160";
+            contact.name = "goo";
+            contact.phone = "0123456789";
+            contact.mail = "godestalbin@gmail.com";
+            contact.zipCode = "45160";
             return View(contact);
         }
 

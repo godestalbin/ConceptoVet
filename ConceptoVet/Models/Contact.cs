@@ -10,6 +10,8 @@ namespace ConceptoVet.Models
 {
     public class Contact
     {
+        [DisplayName("Clinique:")]
+        public String clinique { get; set; }
         [DisplayName("Prénom et nom:")]
         [Required(ErrorMessage = "Donnée obligatoire")]
         [RegularExpression(@"[a-zA-Z ']{3,}", ErrorMessage = "Au moins trois caractères")]

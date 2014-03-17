@@ -28,7 +28,6 @@
 @*        <div class="col-md-1">
         </div>*@
         <div class="col-md-3 float">
-            @Html.LabelFor(model => model.name)
         </div>
         <div class="col-md-3 float">
         </div>
@@ -42,13 +41,14 @@
     <div class="row">
 @*        <div class="col-md-1">
         </div>*@
+        <div class="col-md-3 top-buffer-validation float text-right">
+            @Html.LabelFor(model => model.name)
+        </div>
         <div class="col-md-3 float">
             @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
         </div>
         <div class="col-md-3 top-buffer-validation float">
             @Html.ValidationMessageFor(model => model.name)
-        </div>
-        <div class="col-md-3 float">
         </div>
         <div class="col-md-3 float">
         </div>
@@ -268,7 +268,7 @@
 @*        <div class="col-md-1">
         </div>*@
         <div class="col-md-3 top-buffer-validation">
-        <input id="sendContact" type="button" value="Je souhaite recevoir une copie de cette estimation" class="btn btn-primary" onclick="PostQuotation();"/>
+        <input id="sendContact" type="button" value="Je souhaite recevoir une copie de cette estimation et être contacté par Créadismo" class="btn btn-primary" onclick="PostQuotation();"/>
         </div>
     </div>
 
@@ -667,7 +667,7 @@
                       //{ direction: "vertical" });
             //$("#furnitureCatalogue").show("fold", 10000);
 
-            displayPopupMessage("Remplissez tous les champs pour accéder l'estimation en ligne", 10000, 410, $("#phone").offset().top);
+            //displayPopupMessage("Remplissez tous les champs pour accéder l'estimation en ligne", 10000, 410, $("#phone").offset().top);
 
             $('#furnitureCatalogueBody > div').each(function () {
                 //alert($(this).find('img').attr('title'));
