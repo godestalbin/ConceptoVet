@@ -27,18 +27,21 @@
     <div class="row top-buffer">
 @*        <div class="col-md-1">
         </div>*@
-        <div class="col-md-3 float">
+        <div class="col-md-3 top-buffer-validation float text-right">
+            @Html.LabelFor(model => model.clinique)
         </div>
         <div class="col-md-3 float">
+            @Html.TextBoxFor(model => model.clinique, new { @class = "form-control" })
         </div>
-        <div class="col-md-3 float">
+        <div class="col-md-3 top-buffer-validation float">
+            @Html.ValidationMessageFor(model => model.clinique)
         </div>
         <div class="col-md-3 float">
         </div>
 @*        <div class="col-md-1">
         </div>*@
     </div>
-    <div class="row">
+    <div class="row top-buffer-validation">
 @*        <div class="col-md-1">
         </div>*@
         <div class="col-md-3 top-buffer-validation float text-right">
@@ -56,9 +59,7 @@
         </div>*@
     </div>
 
-    <div class="row top-buffer">
-@*        <div class="col-md-1">
-        </div>*@
+@*    <div class="row top-buffer">
         <div class="col-md-3 float">
             @Html.LabelFor(model => model.phone)
         </div>
@@ -68,12 +69,15 @@
         </div>
         <div class="col-md-3 float">
         </div>
+        <div class="col-md-1">
+        </div>
+    </div>*@
+    <div class="row top-buffer-validation">
 @*        <div class="col-md-1">
         </div>*@
-    </div>
-    <div class="row">
-@*        <div class="col-md-1">
-        </div>*@
+        <div class="col-md-3 top-buffer-validation float text-right">
+            @Html.LabelFor(model => model.phone)
+        </div>
         <div class="col-md-3 float">
             @Html.TextBoxFor(model => model.phone, new { @class = "form-control" })
         </div>
@@ -82,30 +86,14 @@
         </div>
         <div class="col-md-3 float">
         </div>
-        <div class="col-md-3 float">
-        </div>
 @*        <div class="col-md-1">
         </div>*@
     </div>
 
-    <div class="row top-buffer">
-@*        <div class="col-md-1">
-        </div>*@
-        <div class="col-md-3 float">
+    <div class="row top-buffer-validation">
+        <div class="col-md-3 top-buffer-validation float text-right">
             @Html.LabelFor(model => model.mail)
         </div>
-        <div class="col-md-3 float">
-        </div>
-        <div class="col-md-3 float">
-        </div>
-        <div class="col-md-3 float">
-        </div>
-@*        <div class="col-md-1">
-        </div>*@
-    </div>
-    <div class="row">
-@*        <div class="col-md-1">
-        </div>*@
         <div class="col-md-3 float">
             @Html.TextBoxFor(model => model.mail, new { @class = "form-control" })
         </div>
@@ -114,45 +102,24 @@
         </div>
         <div class="col-md-3 float">
         </div>
-        <div class="col-md-3 float">
-        </div>
-@*        <div class="col-md-1">
-        </div>*@
     </div>
 
-    <div class="row top-buffer">
-@*        <div class="col-md-1">
-        </div>*@
-        <div class="col-md-3 float">
+    <div class="row top-buffer-validation">
+        <div class="col-md-3 top-buffer-validation float text-right">
             @Html.LabelFor(model => model.zipCode)
         </div>
         <div class="col-md-3 float">
-        </div>
-        <div class="col-md-3 float">
-        </div>
-        <div class="col-md-3 float">
-        </div>
-@*        <div class="col-md-1">
-        </div>*@
-    </div>
-    <div class="row">
-@*        <div class="col-md-1">
-        </div>*@
-        <div class="col-md-3 float">
             @Html.TextBoxFor(model => model.zipCode, new { @class = "form-control" })
         </div>
-        <div class="col-md-3 top-buffer-validationfloat">
+        <div class="col-md-3 top-buffer-validation float">
             <div id="city"></div>
             @Html.ValidationMessageFor(model => model.zipCode)
             <div id="unknownZipCode" class="field-validation-error nodisplay">Code postal inconnu</div>
         </div>
         <div class="col-md-3 float">
         </div>
-        <div class="col-md-3 float">
-        </div>
-@*        <div class="col-md-1">
-        </div>*@
     </div>
+
 @*    <div id="debugServiceFee"></div>
     <div id="debugDistance"></div>*@
 
@@ -360,12 +327,12 @@
         //This is called when the zipcode has been provided and distance has been calculated
         function PostContact() {
             //alert($("#zipCode").val());
-            if (postedContact != $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val()) {
-                //displayPopupMessage("Posting contact");
-                postedContact = $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val();
+            if (postedContact != $("#clinique").val() + $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val()) {
+                displayPopupMessage("Posting contact");
+                postedContact = $("#clinique").val() + $("#name").val() + $("#phone").val() + $("#mail").val() + $("#zipCode").val();
                 //TMP
                 $.post("/Contact/Contact",
-                    { name: $("#name").val(), phone: $("#phone").val(), mail: $("#mail").val(), zipCode: $("#zipCode").val() }
+                    { clinique: $("#clinique").val(), name: $("#name").val(), phone: $("#phone").val(), mail: $("#mail").val(), zipCode: $("#zipCode").val() }
                 );
             }
         }

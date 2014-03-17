@@ -60,7 +60,7 @@ namespace ConceptoVet.Controllers
                 x.ViewName = "Contact"; //Views/Mail/Welcome
                 //x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
                 //x.To.Add("godestalbin@gmail.com, axelle.munch@gmail.com"); //user.EmailAddress);
-                //x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
+                x.Bcc.Add("godestalbin@gmail.com"); //send me a copy of the mail
                 //x.LinkedResources = resources; //Embedded images - Commute signature
             });
         }
