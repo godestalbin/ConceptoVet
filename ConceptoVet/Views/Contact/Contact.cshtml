@@ -245,7 +245,7 @@
                     //Dans ce cas on se contente d'avoir France à la fin et plus d'un champs
                     //Pour un mauvais code Google retourne France tous seul
                     if ($("#zipCode").val() == destination[0].substring(0, 5) || destination.length > 1 && destination[destination.length - 1] == ' France') {
-                        var city = destination[0].substring(6);
+                        var city = destination[destination.length - 2].replace($("#zipCode").val() + ' ','');
                         //displayPopupMessage(city);
                         $("#city").show();
                         $("#city").html(city) //Show city
