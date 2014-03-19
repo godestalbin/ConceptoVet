@@ -240,7 +240,11 @@
             if (status == google.maps.DistanceMatrixStatus.OK) {
                 if (response.rows.length >= 1) {
                     var destination = response.destinationAddresses[0].split(',');
-                    if ($("#zipCode").val() == destination[0].substring(0, 5)) {
+                    //alert(destination[destination.length - 1]);
+                    //Normalement le zipcode est en première position mais parfois ce n'est pas le cas (44000, 75001)
+                    //Dans ce cas on se contente d'avoir France à la fin et plus d'un champs
+                    //Pour un mauvais code Google retourne France tous seul
+                    if ($("#zipCode").val() == destination[0].substring(0, 5) || destination.length > 1 && destination[destination.length - 1] == ' France') {
                         var city = destination[0].substring(6);
                         //displayPopupMessage(city);
                         $("#city").show();
@@ -307,6 +311,7 @@
         function PostQuotation() {
             //Retrieve contact data in the form
             contact = new Object();
+            contact.clinique = $("#clinique").val();
             contact.name = $("#name").val();
             contact.phone = $("#phone").val();
             contact.mail = $("#mail").val();
@@ -336,7 +341,11 @@
             //Get the service fee as funiture with the ID 99
             furniture = new Object();
             furniture.Id = 99;
-            furniture.Description = "Transport et installation à proximité de " + $("#city").html();
+            cityFirstLetter = $("#city").html().substring(0,1);
+            if (cityFirstLetter == 'A' || cityFirstLetter == 'E' || cityFirstLetter == 'I' || cityFirstLetter == 'O' || cityFirstLetter == 'U' || cityFirstLetter == 'Y')
+                furniture.Description = "Transport et installation à proximité d'" + $("#city").html();
+            else
+                furniture.Description = "Transport et installation à proximité de " + $("#city").html();
             furniture.Qty = 1;
             furniture.Retail = serviceFee;
             furnitures.push(furniture);
@@ -462,7 +471,13 @@
             }
 
             //Add the service
-            $('#quotationTable tbody').append("<tr><td>Transport et installation à proximité de " + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            cityFirstLetter = $("#city").html().substring(0, 1);
+            if (cityFirstLetter == 'A' || cityFirstLetter == 'E' || cityFirstLetter == 'I' || cityFirstLetter == 'O' || cityFirstLetter == 'U' || cityFirstLetter == 'Y')
+                $('#quotationTable tbody').append("<tr><td>Transport et installation à proximité d'" + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+            else
+                $('#quotationTable tbody').append("<tr><td>Transport et installation à proximité de " + $("#city").html() + "</td><td class='numeric'>1</td><td class='numeric'>" + formatNumber(serviceFee) + "</td><td class='numeric'>" + formatNumber(serviceFee) + "</td></tr>");
+
+            
             total += serviceFee;
 
             //Add the total
