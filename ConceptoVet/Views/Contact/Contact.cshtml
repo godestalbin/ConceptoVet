@@ -103,7 +103,7 @@
                         <img id="ref2" src="https://s3.amazonaws.com/conceptovet/images/Chiens 275.png" reference="2" retail="2800" title="Meuble Aliments Profondeur 80 cm x 2.75 m">
                     </div>
                     <div class="catalogue-furniture">
-                        <img id="ref+3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble Aliments Profondeur 55 cm x 2.05 m">
+                        <img id="ref3" src="https://s3.amazonaws.com/conceptovet/images/Chats 205.png" reference="3" retail="2100" title="Meuble Aliments Profondeur 55 cm x 2.05 m">
                     </div>
                     <div class="catalogue-furniture">
                         <img id="ref4" src="https://s3.amazonaws.com/conceptovet/images/Chats 275.png" reference="4" retail="2700" title="Meuble Aliments Profondeur 55 cm x 2.75 m">
@@ -424,7 +424,14 @@
         //Click on furniture in the catalogue: add to quotation
         function catalogueFurnitureClick(event) {
             //Add the img at the end of the furnitureQuotation array
-            furnitureQuotation[furnitureQuotation.length] = $(event.target).children('img')
+            var appName = navigator.appName.split(' ');
+            if (appName[0] == 'Microsoft') {
+                var ref = $(event.target).children('img').context.id;
+                furnitureQuotation[furnitureQuotation.length] = $('#' + ref);//$(event.target).children('img').first();
+            }
+            else
+                furnitureQuotation[furnitureQuotation.length] = $(event.target).children('img');
+
             //Sort the furnitureQuotation array
             furnitureQuotation.sort(function (a, b) { return (a.attr("reference") - b.attr("reference")); });
 
